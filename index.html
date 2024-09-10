@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="jquery.js"></script>
+    <script src="peer.js"></script>
+    <script src="socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js" integrity="sha512-luMnTJZ7oEchNDZAtQhgjomP1eZefnl82ruTH/3Oj/Yu5qYtwL7+dVRccACS/Snp1lFXq188XFipHKYE75IaQQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+</head>
+<body>
+    <div id="div-chat">
+    <div id="left_pannel">
+        <p>Online user:</p>
+        <ul id="ulUser">
+    
+        </ul>
+    </div>
+    
+    <div id="right_pannel">
+       <div id="header">
+        <h3 id="my-peer">Your ID: </h3>
+        <button id="btnCopy">Copy ID</button>
+       </div>
+       <div id="videos">
+        <video id="localStream"  controls></video>
+        <video id="remoteStream" controls></video>
+       </div>
+        <input type="text" id="remoteId" placeholder="Remote ID">
+        <button id="btnCall">Call</button>
+        <button id="btnEnd">End</button>
+    </div>
+   
+    </div>
+
+    <div id="div-dang-ky">
+        <input type="text" id="txtUsername" placeholder="Enter your name"><br>
+        <button id="btnSignup">Signup</button>
+
+    </div>
+</body>
+<script src="main.js"></script>
+</html>
