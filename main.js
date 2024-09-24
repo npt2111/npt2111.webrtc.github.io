@@ -1,6 +1,7 @@
-const socket = io('http://localhost:3001');
+const socket = io('https://b1d4-113-165-213-72.ngrok-free.app');
 
 $('#div-chat').hide();
+$('#divEnd').hide();
 
 socket.on('AI_DO_NGAT_KET_NOI', peerId => {
     $('#' + peerId).remove();
@@ -24,6 +25,8 @@ socket.on('callEnded', () => {
     closeStream('remoteStream');
     
     alert('Cuộc gọi đã kết thúc.');
+    $('#divEnd').hide();
+    $('#divCall').show();
     // Thực hiện các hành động khác nếu cần
 });
 
@@ -73,6 +76,8 @@ peer.on('open', id => {
 //Caller
 $('#btnCall').click(() => {
     const id = $('#remoteId').val();
+    $('#divEnd').show();
+    $('#divCall').hide();
     openStream()
     .then(stream => {
         playStream('localStream', stream);
@@ -82,6 +87,8 @@ $('#btnCall').click(() => {
 });
 
 peer.on('call', call => {
+    $('#divEnd').show();
+    $('#divCall').hide();
     openStream()
     .then(stream => {
         call.answer(stream);
@@ -132,4 +139,6 @@ $('#btnEnd').click(() => {
     closeStream('remoteStream', remoteStream);
     socket.emit('endCall');
     alert('Kết thúc cuộc gọi!');
+    $('#divEnd').hide();
+    $('#divCall').show();
 });
